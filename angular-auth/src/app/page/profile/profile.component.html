@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="flex flex-column align-items-center">
+        
+        <div class="text-center mb-4">
+            <h2 class="mb-1">{{userData?.name}}</h2>
+        </div>
+
+        <div class="grid w-full max-w-3xl">
+            <div class="col-12 md:col-6">
+                <label class="font-bold block mb-2">Nome: </label>
+                <span class="text-900">{{userData?.name}}</span>
+            </div>
+
+            <div class="col-12 md:col-6">
+                <label class="font-bold block mb-2">Usuário: </label>
+                <span class="text-900">{{userData?.username}}</span>
+            </div>
+
+            <div class="col-12 md:col-6">
+                <label class="font-bold block mb-2">Perfil: </label>
+                <span class="text-900">{{userData?.role === 'ROLE_ADMIN' ? 'Administrador' : 'Usuário'}}</span>
+            </div>
+
+            <div class="col-12 md:col-6">
+                <label class="font-bold block mb-2">Status: </label>
+                <p-tag 
+                    [severity]="userData?.active ? 'success' : 'danger'"
+                    [value]="userData?.active ? 'Ativo' : 'Inativo'">
+                </p-tag>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="card">
+    <h2>Gerenciamento de Usuários</h2>
+    
+    <p-table 
+        [value]="users" 
+        [loading]="loading"
+        [paginator]="true" 
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        responsiveLayout="scroll"
+        currentPageReportTemplate="Mostrando {first} até {last} de {totalRecords} registros"
+        [rowsPerPageOptions]="[10,25,50]">
+        
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nome</th>
+                <th>Usuário</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </ng-template>
+        
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>
+                    <p-tag 
+                        [severity]="user.active ? 'success' : 'danger'"
+                        [value]="user.active ? 'Ativo' : 'Inativo'">
+                    </p-tag>
+                </td>
+                <td>
+                    <p-button 
+                        [disabled]="!isAdmin"
+                        icon="pi pi-power-off"
+                        [severity]="user.active ? 'danger' : 'success'"
+                        (onClick)="toggleUserStatus(user)"
+                        [pTooltip]="user.active ? 'Desativar' : 'Ativar'"
+                        [label]="user.active ? 'Inativar' : 'Ativar  '">
+                    </p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
